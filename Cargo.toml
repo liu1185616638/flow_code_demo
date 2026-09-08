@@ -7,7 +7,7 @@ autobins = false
 
 [[bin]]
 name = "flow_code_demo"
-path = "src/app.rs"
+path = "src/light.rs"
 
 [dependencies]
 gpui-kit = "0.6"
@@ -25,4 +25,3 @@ rustybuzz = { opt-level = 3 }
 taffy = { opt-level = 3 }
 ttf-parser = { opt-level = 3 }
 ropey = { opt-level = 3 }
-tree-sitter = { opt-level = 3 }
