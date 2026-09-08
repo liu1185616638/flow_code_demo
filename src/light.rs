@@ -1,5 +1,4 @@
 use gpui_kit::*;
-use gpui_kit::component::Root;
 use gpui_kit::component::theme::Theme;
 
 fn mapped_hex(hex: u32) -> u32 {
@@ -56,41 +55,46 @@ fn mapped_hex(hex: u32) -> u32 {
     }
 }
 
+#[inline]
+fn hsla(hex: u32) -> Hsla {
+    gpui_kit::rgb(hex).into()
+}
+
 fn configure_component_theme(cx: &mut App) {
     let theme = Theme::global_mut(cx);
 
     // General application palette. These values also drive GPUI Kit controls,
     // which makes buttons feel native to the light workspace instead of sitting
     // on top as stark white blocks.
-    theme.colors.background = gpui_kit::rgb(0xf4f7fb);
-    theme.colors.foreground = gpui_kit::rgb(0x1f2937);
-    theme.colors.border = gpui_kit::rgb(0xd9e1ea);
-    theme.colors.input = gpui_kit::rgb(0xcbd5e1);
-    theme.colors.muted = gpui_kit::rgb(0xf1f5f9);
-    theme.colors.muted_foreground = gpui_kit::rgb(0x718096);
-    theme.colors.accent = gpui_kit::rgb(0xe8eeff);
-    theme.colors.accent_foreground = gpui_kit::rgb(0x3156d8);
+    theme.colors.background = hsla(0xf4f7fb);
+    theme.colors.foreground = hsla(0x1f2937);
+    theme.colors.border = hsla(0xd9e1ea);
+    theme.colors.input = hsla(0xcbd5e1);
+    theme.colors.muted = hsla(0xf1f5f9);
+    theme.colors.muted_foreground = hsla(0x718096);
+    theme.colors.accent = hsla(0xe8eeff);
+    theme.colors.accent_foreground = hsla(0x3156d8);
 
     // Primary action: restrained indigo instead of a saturated solid block.
-    theme.colors.primary = gpui_kit::rgb(0x4f6ff7);
-    theme.colors.primary_hover = gpui_kit::rgb(0x4262e6);
-    theme.colors.primary_active = gpui_kit::rgb(0x3554d6);
-    theme.colors.primary_foreground = gpui_kit::rgb(0xffffff);
-    theme.colors.button_primary = gpui_kit::rgb(0x4f6ff7);
-    theme.colors.button_primary_hover = gpui_kit::rgb(0x4262e6);
-    theme.colors.button_primary_active = gpui_kit::rgb(0x3554d6);
-    theme.colors.button_primary_foreground = gpui_kit::rgb(0xffffff);
+    theme.colors.primary = hsla(0x4f6ff7);
+    theme.colors.primary_hover = hsla(0x4262e6);
+    theme.colors.primary_active = hsla(0x3554d6);
+    theme.colors.primary_foreground = hsla(0xffffff);
+    theme.colors.button_primary = hsla(0x4f6ff7);
+    theme.colors.button_primary_hover = hsla(0x4262e6);
+    theme.colors.button_primary_active = hsla(0x3554d6);
+    theme.colors.button_primary_foreground = hsla(0xffffff);
 
     // Default toolbar / navigation buttons: very light cool gray surfaces,
     // subtle border, dark text. This fixes the current bright-white button wall.
-    theme.colors.button = gpui_kit::rgb(0xf8fafc);
-    theme.colors.button_hover = gpui_kit::rgb(0eef3f8);
-    theme.colors.button_active = gpui_kit::rgb(0xe2e9f1);
-    theme.colors.button_foreground = gpui_kit::rgb(0x334155);
-    theme.colors.button_secondary = gpui_kit::rgb(0xf8fafc);
-    theme.colors.button_secondary_hover = gpui_kit::rgb(0xeef3f8);
-    theme.colors.button_secondary_active = gpui_kit::rgb(0xe2e9f1);
-    theme.colors.button_secondary_foreground = gpui_kit::rgb(0x334155);
+    theme.colors.button = hsla(0xf8fafc);
+    theme.colors.button_hover = hsla(0xeef3f8);
+    theme.colors.button_active = hsla(0xe2e9f1);
+    theme.colors.button_foreground = hsla(0x334155);
+    theme.colors.button_secondary = hsla(0xf8fafc);
+    theme.colors.button_secondary_hover = hsla(0xeef3f8);
+    theme.colors.button_secondary_active = hsla(0xe2e9f1);
+    theme.colors.button_secondary_foreground = hsla(0x334155);
 
     // Keep the visual language calm and desktop-tool-like.
     theme.radius = px(7.0);
@@ -106,7 +110,7 @@ mod showcase {
     // us reuse the entire interactive demo and translate only its visual token
     // layer instead of duplicating the application logic.
     fn rgb(hex: u32) -> gpui_kit::Hsla {
-        gpui_kit::rgb(super::mapped_hex(hex))
+        gpui_kit::rgb(super::mapped_hex(hex)).into()
     }
 
     include!("app.rs");
