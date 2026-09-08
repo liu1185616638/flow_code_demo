@@ -3,6 +3,11 @@ name = "flow_code_demo"
 version = "0.1.0"
 edition = "2024"
 publish = false
+autobins = false
+
+[[bin]]
+name = "flow_code_demo"
+path = "src/app.rs"
 
 [dependencies]
 gpui-kit = "0.6"
