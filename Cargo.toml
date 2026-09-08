@@ -1,0 +1,23 @@
+[package]
+name = "flow_code_demo"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+gpui-kit = "0.6"
+
+[profile.dev]
+codegen-units = 16
+debug = "limited"
+
+[profile.dev.package]
+gpui-pre = { opt-level = 3 }
+gpui-pre-platform = { opt-level = 3 }
+gpui-pre-macros = { opt-level = 3 }
+gpui-pre-sum-tree = { opt-level = 3 }
+rustybuzz = { opt-level = 3 }
+taffy = { opt-level = 3 }
+ttf-parser = { opt-level = 3 }
+ropey = { opt-level = 3 }
+tree-sitter = { opt-level = 3 }
